@@ -3,7 +3,7 @@ const UserModel = require("../models/user.model");
 let bcrypt = require("bcrypt");
 
 const createUser = async ({ fullname, email, password, address }) => {
-  if (!fullname?.firstname || !fullname?.lastname || !password || !email || !address) {
+  if (!fullname?.firstname || !fullname?.lastname || !password || !email || !address || !mobnumber) {
     throw new Error("All fields are required");
   }
 
@@ -11,6 +11,7 @@ const createUser = async ({ fullname, email, password, address }) => {
     fullname,
     email,
     password,
+    mobnumber
   });
 
   return user;

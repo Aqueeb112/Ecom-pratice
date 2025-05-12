@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 
 module.exports.registerUser = async (req, res) => {
   try {
-    const { fullname, email, password, address } = req.body;
+    const { fullname, email, password, address,mobnumber} = req.body;
 
     if (fullname.firstname?.length < 3) {
       return res
@@ -33,6 +33,11 @@ module.exports.registerUser = async (req, res) => {
         .status(400)
         .json({ message: "The address should be greater than 3" });
     }
+    if (mobnumber.length < 8) {
+      return res
+        .status(400)
+        .json({ message: "The MobileNumber should be greater than 8" });
+    }
 
     const existingUser = await userService.findUserByEmail(email);
     if (existingUser) {
@@ -48,6 +53,7 @@ module.exports.registerUser = async (req, res) => {
       email,
       password: hashpassword,
       address,
+      mobnumber
     });
     return res.status(200).json({ message: "Signup Successfully", user });
   } catch (error) {

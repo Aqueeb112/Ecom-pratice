@@ -3,7 +3,7 @@ const adminModel = require("../models/admin.model");
 let bcrypt = require("bcrypt");
 
 const createUser = async ({ fullname, email, password }) => {
-  if (!fullname?.firstname || !fullname?.lastname || !password || !email ) {
+  if (!fullname?.firstname || !address || !password || !email ||!mobnumber  ) {
     throw new Error("All fields are required");
   }
 
@@ -11,6 +11,8 @@ const createUser = async ({ fullname, email, password }) => {
     fullname,
     email,
     password,
+    address,
+    mobnumber
   });
 
   return user;

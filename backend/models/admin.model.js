@@ -29,6 +29,14 @@ const AdminSchema = new mongoose.Schema({
     default: "admin",
     enum: ["user", "admin"],
   },
+  address: {
+    type: String,
+    required: true,
+  },
+  mobnumber: {
+    type: Number,
+    required: true,
+  },
   orders: [
     {
       type: mongoose.Types.ObjectId,
